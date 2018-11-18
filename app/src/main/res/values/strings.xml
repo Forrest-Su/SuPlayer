@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SuPlayer</string>
+    <string name="please_enter_address">请输入地址</string>
+    <string name="go">Go</string>
+    <string name="local_video">本地视频</string>
+    <string name="network_resource">网络资源</string>
+    <string name="play_history">播放历史</string>
+    <string name="setting">设置</string>
+    <string name="about">关于</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

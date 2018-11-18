@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--"single"表示组中所有菜单项只能单选-->
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_local"
+            android:title="@string/local_video"
+            android:icon="@drawable/outline_video_library_black_24"/>
+
+        <item
+            android:id="@+id/nav_http"
+            android:title="@string/network_resource"
+            android:icon="@drawable/outline_http_black_24"/>
+
+        <item
+            android:id="@+id/nav_history"
+            android:title="@string/play_history"
+            android:icon="@drawable/outline_history_black_24"/>
+
+        <item
+            android:id="@+id/nav_setting"
+            android:title="@string/setting"
+            android:icon="@drawable/outline_settings_black_24"/>
+    </group>
+
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_about"
+            android:title="@string/about"
+            android:icon="@drawable/outline_info_black_24"/>
+    </group>
+
+
+
+</menu>
