@@ -7,14 +7,18 @@ import android.util.Log;
 import com.example.forrestsu.suplayer.MyJzvdStd;
 import com.example.forrestsu.suplayer.R;
 import com.example.forrestsu.suplayer.base.BaseActivity;
+import com.example.forrestsu.suplayer.bean.PlayedHistory;
 
 import cn.jzvd.Jzvd;
 
 public class PlayVideoActivity extends BaseActivity implements MyJzvdStd.StateListener {
 
     private static final String TAG = "PlayVideoActivity";
+    //第一次播放成功时记录当前时间
+    private boolean firstOnPlaying = true;
 
     private String videoSource;
+    private String title;
 
 
     @Override
@@ -25,7 +29,7 @@ public class PlayVideoActivity extends BaseActivity implements MyJzvdStd.StateLi
         Intent intent = getIntent();
         videoSource = intent.getStringExtra("source");
         Log.i(TAG, "视频来源：" + videoSource);
-        String title = videoSource.substring(videoSource.lastIndexOf("/") + 1);
+        title = videoSource.substring(videoSource.lastIndexOf("/") + 1);
         Log.i(TAG, "视频标题：" + title);
 
         MyJzvdStd mJzvdStd = (MyJzvdStd) findViewById(R.id.jz_player_video);
@@ -51,7 +55,16 @@ public class PlayVideoActivity extends BaseActivity implements MyJzvdStd.StateLi
     public void onStatePlaying() {
         Log.i(TAG, "onStatePlaying: 正在播放");
         //进入播放状态，说明播放成功，将当前视频加入播放历史
-
+        if (firstOnPlaying) {
+            Log.i(TAG, "onStatePlaying: 开始存储播放历史");
+            long currentTime = System.currentTimeMillis();
+            PlayedHistory history = new PlayedHistory();
+            history.setTitle(title);
+            history.setSource(videoSource);
+            history.setPlayedTime(currentTime);
+            history.save();
+            firstOnPlaying = false;
+        }
     }
 
 }
